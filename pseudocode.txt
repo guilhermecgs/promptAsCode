@@ -1,0 +1,28 @@
+export function modifyConfig(config: Config): Config {
+  for each prompt_filename_txt in {pre-determined folder configured} in continue_dev_settings {
+
+     $name=read prompt name from prompt txt file
+     $description=read prompt description from prompt txt file
+     $prompt= read prompt definition from prompt txt file
+
+    config.slashCommands?.push({
+      name: "$name",
+      description: "$description",
+
+      run: async function* (sdk) {
+         for await (const message of sdk.llm.streamComplete(prompt)
+          {
+            maxTokens: 20,
+          },
+        )) {
+          yield message;
+        }
+      },
+    });
+    return config;
+} 
+
+
+prompt_filename_txt will be an example prompt, with a custom schema.
+{pre-determined folder configured} = ./prompt folder, as an example
+continue_dev_settings = a configuration we are going to make in the IDE settings
