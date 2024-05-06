@@ -1,0 +1,5 @@
+{
+  "name": "yoko",
+  "prompt": "Write 'Yoko'",
+  "description": "Write Yoko in chat"
+}
